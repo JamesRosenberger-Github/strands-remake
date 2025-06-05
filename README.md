@@ -1,12 +1,8 @@
-# CMSC 14200 Course Project
+# Strands Remake: James Rosenberger
+This is a modified version of a project I completed for my CMSC 14200 course which features only those implemenations (GUI and Game Logic) I was responsible for creating. Below, I will describe how you can play this game yourself.
 
-Team members:
-- GUI: James Rosenberger (jmrosenberger)
-- TUI: Anna Sokolova (annsok0l)
-- Art: Caden Tebow (ctebow)
-- QA:  Derrick Young (dvyoung)
-
-### Enhancements:
+## Enhancements:
+As a part of the project, I was required to contribute some enhancements to the original functioning of the game. Below are two that I created with explanations on how to run them locally.
 
 ### GUI-SOUND:
 For testing the game with sounds, use the optional
@@ -27,70 +23,4 @@ a new GAME.with-words.txt file in the assets/ directory from the original
 file specified by -g game in the command-line. This newly created file, if
 made, is NOT used by the Game Logic, as this addition was optional. Enjoy!
 
-### SOLVER:
-For testing this functionality, run <src/solver.py -g boards/GAMEFILE>.
-For testing out the general solver, which is incomplete, run
-<src/solver.py -g boards/GAMEFILE --type general>. The working solver works by
-assuming that it is given the game answers as only strings, without knowing
-their starting positions or steps. It then "completes" the game file, by filling in
-the missing starts and steps. The general solver assumes that it only
-knows the game theme and gameboard. More info about the general solver can be found in
-the file, but right now it is able to find about 3-4 of the answers on each board. 
-
-### TUI-CAPTIONS:
-We added helpful captions in the TUI to show what’s going on—like if your word’s too short, not in the dictionary, or if you found a valid one. 
-
-### TUI-SHOW-RESULTS:
-In Show mode, the TUI now clearly shows all the correct answers, highlights what you found, and gives a clean summary at the end.
-
-### TUI-SPECIAL:
-We gave the TUI more visuals —colors for selections, found words, and hint letters.
-
-### Revisions:
-
-### Game Logic: 
-The rubric item description was "Issue with hint feature.
-See code comment(s)." The code comment was as follows, by line 399 of the
-src/strands file:
-
-[Code Quality] implementation maintains the hint state even after it's
-been used but should return "No hint yet" whenever the hint meter
-is below the threshold, regardless of the current hint state.
-The current implementation is giving precedence to the "Use your current hint"
-message even when the hint meter is below the threshold.
-The boolean flag used to maintain the hint state may not be
-properly reset when strands are successfully
-submitted. 
-
-To fix this, we first added a conditional (see NEW LOGIC comment
-at the start of use_hints that checks before performing
-the use_hint logic if the current hint_word has already been guessed,
-and, if so, resets the hint state. This ensures
-the hint state is always reset, on top of what is already present
-in submit_strands. Beyond this, below in use_hint,
-(see other NEW LOGIC comment), I modify another conditional so that
-"No hint yet" is read whenever the hint meter is below the threshold,
-irrespective of the hint state, as desired. Along with a small GUI
-fix (marked by NEW LOGIC) so that any h key press would trigger self.handle_hint_conditions()
-instead of only ones above the hint threshold, this solves all the problems. 
-
-### GUI: This component received two S scores in Milestone 2.
-
-### TUI: Milestone 1: SS Milestone 2: NS
-
-Built the full text-based interface with play and show modes
-Fixed hint logic so hints only show when ready and reset properly after use
-Added clear input handling for submitting strands with helpful error messages
-Used colors to highlight found words, hints, and selections for better clarity
-Improved game info display (theme, hints, found words) and screen refreshing
-Added docstrings and comments for easier understanding
-
-### Art: This component received two S scores in Milestone 2. There was an instructor comment
-on adding docstrings for various student-created functions and classes, which has been 
-resolved by adding docstrings to functions where there were no docstrings previously. 
-
-### QA: Milestone 1: SS Milestone 2: NS
-Ensured use_hint() behavior is tested properly accross different hint thresholds.
-Replaced unordered set comparisons with ordered lists to verify word submission matches the same
-order of the expected.
 
