@@ -37,7 +37,7 @@ strand word. Enjoy!
 ### DICTIONARY-WORDS:
 For testing this functionality, use the optional
 command-line parameter --words in addition to all the other normal
-PLay or Show mode command-line arguments. Doing so will create
+Play or Show mode command-line arguments. Doing so will create
 a new GAME.with-words.txt file in the assets/ directory from the original
 file specified by -g game in the command-line. This newly created file, if
 made, is NOT used by the Game Logic, as this addition was optional. Enjoy!
